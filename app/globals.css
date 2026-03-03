@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  /* Clay card effect */
+  .clay-card {
+    @apply bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.6)]
+           border border-white/50;
+  }
+
+  /* Clay button 3D effect */
+  .clay-button-red {
+    @apply relative bg-gradient-to-b from-lixi-red to-lixi-red-dark text-white font-bold
+           shadow-[0_6px_0_#B71C1C,0_8px_16px_rgba(229,57,53,0.3)]
+           hover:shadow-[0_4px_0_#B71C1C,0_6px_12px_rgba(229,57,53,0.3)]
+           hover:translate-y-0.5
+           active:shadow-[0_2px_0_#B71C1C,0_3px_6px_rgba(229,57,53,0.3)]
+           active:translate-y-1
+           transition-all duration-150;
+  }
+
+  /* Scrollbar styling for audit log */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Animation for prize reveal */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+}
